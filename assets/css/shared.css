@@ -1,0 +1,179 @@
+/* PÁGINA INDEX.HTML (SERVIRÁ DE PLANTILLA PARA LAS PÁGINAS FUTURAS) */
+/* Estilos para LANDING PAGE de INDEX (Apartado 1)*/
+/* Estilo base para la página */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden; /* Evitar scroll horizontal */
+    overflow-y:visible; /* Para que no se vea la barra vertical de scroll */
+    font-family: 'Jost', serif;
+}
+
+.landingPage {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, #1a5c38, #020f08);
+    background-size: 200% 200%;
+    animation: breathe 15s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; }
+}
+
+/* GRID — 4 filas se crean con altura máxima */
+.landing-grid {
+    position: relative;
+    z-index: 1;              /* se posiciona por encima de todos */
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;  /* nav | titulo | botones | slogan */
+    grid-template-columns: 1fr;
+}
+
+/* Contenedor 1: Nav */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0,0,0,0.3);
+}
+
+/* Modifica los enlaces dentro del contenedor de nav */
+nav a {
+    text-decoration: none;
+    color: rgba(245,240,232,0.65);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+/* Contenedor 2: Título — flexbox lo centra en el espacio disponible */
+.landing-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Estilo de 'Where the world whispers' */
+.landing-title h2 a {
+    text-decoration: none;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9rem;
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+}
+
+/* Estilo de los párrafos dentro del contenedor del título */
+.landing-title p {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+/* Contenedor 3: Botones — flexbox fila */
+.landing-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.landing-buttons button {
+    background: none;
+    color: white;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.8rem;
+    margin: 0 1rem;
+    border-radius: 2px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+/* Contendor 4: Slogan */
+.slogan {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    color: rgba(245,240,232,0.5);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+}
+
+/* Estilo general del footer (este apartado se repite en todas páginas) */
+footer {
+    display: flex;
+    justify-content: space-around; /*  controla cómo se distribuyen los elementos a lo largo del eje horizontal */
+    background-color: rgb(7, 44, 35);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+}
+
+/* Contenedor de las columnas "VISIT US", "COPYRIGHT", "DESTINATIONS", "STAY CONNECTED" */
+.footer-section {
+    max-width: 15rem;
+    font-size: 1.5rem;
+}
+
+/* Estilo de los títulos de las columnas: "VISIT US", "COPYRIGHT", "DESTINATIONS", "STAY CONNECTED" */
+.footer-section h3 {
+    font-size: 2.5rem; /* Tamaño de fuente ajustado */
+    margin-bottom: 1.2rem;
+    margin-right: 2.3rem;
+    align-content: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Estilo para los enlaces */
+.footer-section a {
+    display: block; /* Hace que los enlaces ocupen una línea completa */
+    margin: 0.5rem 0;
+    color: #d8f9d8; /* Color para los enlaces */
+    text-decoration: none;
+    font-weight: lighter;
+    transition: color 0.3s;
+}
+
+/* Cambio de color al pasar el ratón sobre el enlace */
+.footer-section a:hover {
+    color: #9abc9a; /* Cambia el color al pasar el ratón sobre los enlaces */
+}
+
+/* Estilo para las img que contiene el CopyRight */
+.footer-logo img {
+    width: 15rem; /* Tamaño del logo ajustado */
+    margin: 2rem;
+    margin-top: 2rem;
+}
+
+/* Distribución de los iconos de las redes sociales */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons i {
+    font-size: 3rem; /* Tamaño grande para los iconos */
+    transition: transform 0.3s, color 0.3s;
+    color: #d8f9d8; /* Color inicial de los iconos */
+}
+
+/* Cambio de color al pasar el ratón sobre el enlace */
+.social-icons i:hover {
+    transform: scale(1.2); /* Efecto de zoom */
+    color: #9abc9a; /* Cambia el color al hacer hover */
+}

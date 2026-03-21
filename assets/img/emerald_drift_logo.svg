@@ -1,0 +1,75 @@
+<svg viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&amp;display=swap');
+    </style>
+    <clipPath id="gc">
+      <circle cx="200" cy="188" r="108"/>
+    </clipPath>
+  </defs>
+
+  <!-- Globe outer ring -->
+  <circle cx="200" cy="188" r="108" fill="none" stroke="white" stroke-width="1.2"/>
+
+  <!-- Globe interior lines, clipped -->
+  <g clip-path="url(#gc)" stroke="white" fill="none">
+    <!-- Equator -->
+    <ellipse cx="200" cy="188" rx="108" ry="30" stroke-width="0.85" opacity="0.6"/>
+    <!-- Upper latitude ~30° -->
+    <ellipse cx="200" cy="134" rx="93" ry="26" stroke-width="0.7" opacity="0.42"/>
+    <!-- Lower latitude ~30° -->
+    <ellipse cx="200" cy="242" rx="93" ry="26" stroke-width="0.7" opacity="0.42"/>
+    <!-- Upper latitude ~60° -->
+    <ellipse cx="200" cy="94" rx="54" ry="15" stroke-width="0.6" opacity="0.28"/>
+    <!-- Lower latitude ~60° -->
+    <ellipse cx="200" cy="282" rx="54" ry="15" stroke-width="0.6" opacity="0.28"/>
+    <!-- Prime meridian (vertical line) -->
+    <line x1="200" y1="80" x2="200" y2="296" stroke-width="0.75" opacity="0.45"/>
+    <!-- Offset meridian (ellipse) -->
+    <ellipse cx="200" cy="188" rx="54" ry="108" stroke-width="0.75" opacity="0.4"/>
+  </g>
+
+  <!-- Flight path: dashed arc from lower-left, over the top, to upper-right -->
+  <!-- Start θ=150°: (200+108*cos150, 188+108*sin150) = (106.5, 242) -->
+  <!-- End  θ=300°: (200+108*cos300, 188+108*sin300) = (254, 94.5) -->
+  <path d="M 106.5,242 A 108,108 0 1,0 254,94.5"
+        fill="none" stroke="white" stroke-width="1.05"
+        stroke-dasharray="3.5,6" opacity="0.6"/>
+
+  <!-- Airplane at (254, 94.5), rotated 108° so nose points direction of travel -->
+  <g transform="translate(254,94.5) rotate(108)" fill="white">
+    <!-- Fuselage -->
+    <path d="M 0,-15 C 1.8,-8.5 2.2,0 1.8,8.5 L 0,13 L -1.8,8.5 C -2.2,0 -1.8,-8.5 0,-15 Z"/>
+    <!-- Main wings -->
+    <path d="M 0.2,-4 L 21,5.5 L 19,8 L 0.2,2.5 L -18.6,8 L -20.6,5.5 Z"/>
+    <!-- Tail fins -->
+    <path d="M 0,8.5 L 8,12.5 L 7.5,14.5 L 0,11 L -7.5,14.5 L -8,12.5 Z"/>
+  </g>
+
+  <!-- Thin horizontal accent line above text -->
+  <line x1="148" y1="344" x2="252" y2="344" stroke="white" stroke-width="0.5" opacity="0.45"/>
+
+  <!-- EMERALD -->
+  <text x="201.5" y="378"
+        text-anchor="middle"
+        fill="white"
+        font-family="'Cormorant Garamond', Didot, 'Book Antiqua', Palatino, Georgia, serif"
+        font-size="29"
+        font-weight="300"
+        letter-spacing="9.5">EMERALD</text>
+
+  <!-- Tiny centered diamond separator -->
+  <polygon points="200,390.5 202.8,394.5 200,398.5 197.2,394.5" fill="white" opacity="0.55"/>
+
+  <!-- DRIFT -->
+  <text x="202" y="424"
+        text-anchor="middle"
+        fill="white"
+        font-family="'Cormorant Garamond', Didot, 'Book Antiqua', Palatino, Georgia, serif"
+        font-size="29"
+        font-weight="300"
+        letter-spacing="17.5">DRIFT</text>
+
+  <!-- Thin horizontal accent line below text -->
+  <line x1="148" y1="436" x2="252" y2="436" stroke="white" stroke-width="0.5" opacity="0.45"/>
+</svg>

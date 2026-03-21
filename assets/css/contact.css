@@ -1,0 +1,84 @@
+/* Apartado 2 - NO DUDES EN CONTACTARNOS */
+/* Contenedor principal de la sección */
+.contact-section {
+    box-sizing: border-box; /* Incluye padding y bordes en el ancho total de la caja */
+    background-color: #75b085; /* Fondo oliva */
+    text-align: center; /* Centra el texto */
+    margin: 2rem; /* Espacio alrededor del contenedor */
+    font-family: 'Cormorant Garamond', serif; /* Fuentes principales */
+    padding: 2rem; /* Espaciado interno */
+}
+
+/* Título de la sección */
+.contact-section h2 {
+    font-size: 1.8rem; /* Tamaño del texto */
+    background-color: #333; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    padding: 0.6rem 1.2rem; /* Espacio interno */
+    margin: 0 auto 1.5rem auto; /* Centrado y margen inferior */
+    display: inline-block; /* Elemento en línea con comportamiento de bloque */
+    font-weight: 700; /* Texto en negrita */
+}
+
+/* Párrafos de la sección */
+.contact-section p {
+    font-size: 1rem; /* Tamaño del texto */
+    color: #666; /* Texto gris */
+    margin-bottom: 1.5rem; /* Margen inferior */
+    max-width: 40rem; /* Ancho máximo */
+    margin-left: auto; /* Centra el párrafo */
+    margin-right: auto; /* Centra el párrafo */
+    line-height: 1.6; /* Espaciado entre líneas */
+}
+
+/* Formulario de contacto */
+.contact-section form {
+    display: flex; /* Usa flexbox */
+    flex-direction: column; /* Apila los elementos en columna */
+    align-items: center; /* Centra los elementos */
+    gap: 1rem; /* Espacio entre elementos */
+}
+
+/* Texto que indica '* campos obligatorios' */
+.contact-section .required-note {
+    font-size: 0.9rem; /* Texto pequeño */
+    color: #ffcccb; /* Color rojo claro */
+    margin-bottom: 1.5rem; /* Margen inferior */
+}
+
+/* Estilos para campos de entrada */
+.contact-section input,
+.contact-section select,
+.contact-section textarea {
+    background: white; /* Fondo blanco */
+    border: none; /* Sin borde */
+    border-bottom: 0.2rem solid #333; /* Línea inferior oscura */
+    color: #333; /* Texto oscuro */
+    padding: 0.6rem; /* Espacio interno */
+    font-size: 1rem; /* Tamaño del texto */
+    width: 100%; /* Ancho completo con respecto al ancho máximo */
+    max-width: 30rem; /* Ancho máximo */
+    box-sizing: border-box; /* Incluye padding en el ancho */
+}
+
+/* Área de texto 'How can we help?' */
+#message {
+    height: 8rem; /* Altura específica */
+}
+
+/* Botón de envío del formulario */
+.contact-section button {
+    padding: 0.6rem 2rem; /* Espacio interno */
+    background-color: #333; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    border: 0.15rem solid white; /* Borde blanco */
+    font-size: 1rem; /* Tamaño del texto */
+    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
+}
+
+/* Efecto al pasar el cursor por el botón */
+.contact-section button:hover {
+    background-color: white; /* Fondo blanco */
+    border: solid #333;
+    color: #333; /* Texto oscuro */
+}
