@@ -90,7 +90,8 @@ nav a {
     padding: 2rem;
 }
 
-.landing-buttons button {
+.landing-buttons button,
+.button{
     background: none;
     color: white;
     text-decoration: none;
@@ -157,7 +158,6 @@ footer {
 .footer-logo img {
     width: 15rem; /* Tamaño del logo ajustado */
     margin: 2rem;
-    margin-top: 2rem;
 }
 
 /* Distribución de los iconos de las redes sociales */
