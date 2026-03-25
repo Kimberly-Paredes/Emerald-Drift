@@ -1,4 +1,7 @@
-// Creamos una constante que contenga la referencia al formulario
+// APARTADO PARA RENDERIZAR EL LOCAL STORAGE CON LOS USUARIOS
+// Explicación 1
+
+// Creamos una constante que contenga la referencia a la tabla en la que irán almacenados los usuarios
 const users_table = document.getElementById('users-tbody');
 
 // Obtenemos el array de objetos (usuarios) si existe, caso contrario creamos un array
@@ -42,4 +45,38 @@ window.deleteUser = function(id) {
 
     // Hacemos que actualice la página cuando elimine el usuario
     location.reload();
+}
+
+// APARTADO PARA RENDERIZAR EL LOCAL STORAGE CON LOS DESTINOS
+
+// creamos una constante con referencia al contenedor que se utilizará para las cards con los destinos
+const destinations_container = document.getElementById('destinations');
+
+// Obtenemos los destinos guardados en local storage, si no inicializamos un array vacío
+const destinations = JSON.parse(localStorage.getItem('destinations')) || [];
+
+// Si el array no contiene ningún destino, lo mostrará en el documento
+if (destinations.length === 0) {
+    destinations_container.innerHTML = `<div class="ls-empty-cards">No destinations added yet</div>`;
+
+} else {
+    destinations_container.innerHTML = destinations.map(d => `
+        <div class="dest-card" onclick="toggleCard(this)">
+            <p class="dest-region">${d.country}</p>
+            <h3 class="dest-name">${d.destinationName}</h3>
+            <p class="dest-desc">Price: ${d.price}€</p>
+            <p class="dest-desc">Passport required: ${d.passport ? 'Yes' : 'No'}</p>
+            
+            <!--      Este será el contenedor que aparecerá cuando el usuario haga click sobre el contenedor principal      -->
+            <div class="dest-details">
+                <p class="dest-desc">${d.description}</p>
+                <h4>Reservations</h4>
+            <p class="dest-desc">No reservations yet</p>
+        </div>
+        </div>
+    `).join('');
+}
+
+window.toggleCard = function(card) {
+    card.classList.toggle('open');
 }

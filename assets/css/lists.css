@@ -1,20 +1,26 @@
 /* Estilos para la sección de listas */
+/* CONTENEDOR PRINCIPAL: es el que contendrá la tabla con los usuarios y los destinos */
 .lists-section {
     background: #62926f;
-    padding: 5rem 4rem;
-    color: white;
-    margin: 2rem;
+    padding: 5rem 4rem; /* Espacio entre el contenido y el borde */
+    color: white; /* Color del font */
+    margin: 2rem; /* Color entre el borde y el espacio alrededor*/
 }
 
+/* Contenedor que contendrá la tabla con los usuarios */
 .ls-block {
     margin-bottom: 5rem;
 }
+
+/* Estilos para el label 'Registry' */
 .ls-label {
     color: #08261c;
     text-transform: uppercase;
     letter-spacing: 0.3em;
     font-size: 0.7rem;
 }
+
+/* Estilos para el título 2 de la tabla de usuarios 'Registered users' */
 .ls-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem; font-weight: 300;
@@ -25,60 +31,72 @@
     border-bottom: 0.2rem solid white;
 }
 
+/* Estilos para la etiqueta hija 'em', cambiamos el color y estilo (para diferenciarlo) */
 .ls-title em {
     color: #62c080;
     font-style: italic;
 }
 
-/* TABLE */
+/* Estilos para la tabla, ancho 100% y que los bordes de las columnas y filas se solapen */
 .ls-table {
     width: 100%;
     border-collapse: collapse;
 }
 
+/* Estilos para los títulos (cabeceras) de la tabla */
 .ls-table th {
     color: #08261c;
     padding: 0.8rem 0;
     text-align: left;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid #FFFFFF1A;
 }
 
+/* Estilos para las celdas */
 .ls-table td {
     padding: 0.8rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid #FFFFFF0D;
 }
 
-/* EMPTY */
-.ls-empty, .ls-empty-cards {
+/* Estilos para el contenedor que contiene 'No hay usuarios creados' */
+.ls-empty {
     padding: 3rem;
     text-align: center;
     opacity: 0.3;
     border: 1px dashed white;
 }
 
-/* CARDS */
+/* Estilos para el apartado de los destinos (los cards) */
 .ls-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: 1px;
 }
 
+/* APARTADO DE LOS CARDS */
+/* Estilo para el contenedor que no tiene destinos */
 .ls-empty-cards {
-    grid-column: 1 / -1;
+    width: 100%;
 }
 
+/* Contenedor con el destino */
 .dest-card {
+    flex: 1 1 220px;
     padding: 2rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: #FFFFFF0D;
+    border: 1px solid #FFFFFF14;
+    cursor: pointer;
 }
 
 .dest-card:hover {
-    background: rgba(255,255,255,0.1);
+    background: #FFFFFF1A;
+}
+
+.dest-card.open .dest-details {
+    display: block;
 }
 
 .dest-region {
-    color: #3db882;
+    color: #0c2f23;
     text-transform: uppercase;
     font-size: 0.7rem;
 }
@@ -93,4 +111,11 @@
     font-size: 0.8rem;
     opacity: 0.5;
     line-height: 1.8;
+}
+
+.dest-details {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }

@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
     <link rel="icon" href="../assets/img/emerald_drift_logo_black_preview.svg" type="image/jpeg"> <!-- Logo en la pestaña -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Para los símbolos de las redes sociales -->
-    <script type="module" src="/Proyecto-Web/assets/js/add_user_to_list.js"></script>
+    <script type="module" src="/Proyecto-Web/assets/js/add_user_destination_to_list.js"></script>
     <title>Emerald Drift - Lists</title>
 </head>
 <body>
@@ -56,19 +56,19 @@
             <h2 class="ls-title">Registered <em>users</em></h2>
             <table class="ls-table">
                 <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Surname</th>
-                    <th>Age</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>ID Number</th>
-                    <th>Country</th>
-                    <th>Exp. Date</th>
-                    <th>Change</th>
-                    <th>Delete</th>
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Age</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>ID Number</th>
+                        <th>Country</th>
+                        <th>Exp. Date</th>
+                        <th>Change</th>
+                        <th>Delete</th>
+                    </tr>
                 </thead>
                 <tbody id="users-tbody">
                 <!-- Aquí se insertarán los usuarios nuevos creados (o si la tabla está vacía) -->
@@ -80,8 +80,8 @@
         <div class="ls-block">
             <p class="ls-label">Catalogue</p>
             <h2 class="ls-title">Available <em>destinations</em></h2>
-            <div class="ls-cards" id="destinations-grid">
-                <div class="ls-empty-cards">No destinations added yet</div>
+            <div class="ls-cards" id="destinations">
+                <!--      Aquí irán los cards, ya sea el contenedor vacío o con los destinos          -->
             </div>
         </div>
 

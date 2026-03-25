@@ -30,40 +30,36 @@ if (editId) {
 const form = document.querySelector('form');
 
 // Si lo obtenemos, añadimos un event listener, para que 'escuche' cuando el usuario pulse el botón 'submit'
-if (form) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Para evitar que se recargue
 
-        // Creamos un objeto con todos los datos del usuario
-        const user = {
-            id: editId || Date.now(),
-            name: document.getElementById('name').value,
-            surname: document.getElementById('surname').value,
-            email: document.getElementById('email').value,
-            age: document.getElementById('age').value,
-            phone: document.getElementById('phone').value,
-            identification: document.getElementById('id-number').value,
-            expirationCountry: document.getElementById('expiration-country').value,
-            expiryDate: document.getElementById('expiration-date').value
-        };
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Para evitar que se recargue
 
-        // Obtenemos el array de usuarios o inicializamos uno
-        const users = JSON.parse(localStorage.getItem('users')) || [];
+    // Obtenemos el array de usuarios o inicializamos uno
+    const users = JSON.parse(localStorage.getItem('users')) || [];
 
-        // Comprobamos si un usuario ya existe en la lista
-        const existingIndex = users.findIndex(u => u.id === user.id);
+    const nextId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
 
-        // Si encontró una coincidencia, lo sobreescribe
-        if (existingIndex !== -1) {
-            users[existingIndex] = user;
-        } else {
-            users.push(user); // Añade un usuario nuevo al final del array
-        }
+    // Creamos un objeto con todos los datos del usuario
+    const user = {
+        id: editId || nextId,
+        name: document.getElementById('name').value,
+        surname: document.getElementById('surname').value,
+        email: document.getElementById('email').value,
+        age: document.getElementById('age').value,
+        phone: document.getElementById('phone').value,
+        identification: document.getElementById('id-number').value,
+        expirationCountry: document.getElementById('expiration-country').value,
+        expiryDate: document.getElementById('expiration-date').value
+    };
 
-        // Añade el array al local storage
-        localStorage.setItem('users', JSON.stringify(users));
+    // Podríamos comprobar la existencia del usuario en el array, pero no tendría mucho sentido
+    // Porque el índice asegura que cada usuario será único con una 'PK' en el array de objetos
 
-        // Redirige a la página de listados
-        window.location.href = '/Proyecto-Web/pages/listados.html';
-    });
-}
+    users.push(user); // Añade un usuario nuevo al final del array
+
+    // Añade el array al local storage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Redirige a la página de listados
+    window.location.href = '/Proyecto-Web/pages/listados.html';
+});
