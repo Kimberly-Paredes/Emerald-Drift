@@ -91,10 +91,6 @@
     background: #FFFFFF1A;
 }
 
-.dest-card.open .dest-details {
-    display: block;
-}
-
 .dest-region {
     color: #0c2f23;
     text-transform: uppercase;
@@ -111,11 +107,4 @@
     font-size: 0.8rem;
     opacity: 0.5;
     line-height: 1.8;
-}
-
-.dest-details {
-    display: none;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.08);
 }

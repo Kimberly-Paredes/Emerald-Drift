@@ -2,91 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/Proyecto-Web/assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-    <link rel="icon" href="../assets/img/emerald_drift_logo_black_preview.svg" type="image/jpeg"> <!-- Logo en la pestaña -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Para los símbolos de las redes sociales -->
-    <script type="module" src="/Proyecto-Web/assets/js/add_user_destination_to_list.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400&display=swap"
+          rel="stylesheet">
+    <link rel="icon" href="../assets/img/emerald_drift_logo_black_preview.svg" type="image/jpeg">
+    <!-- Logo en la pestaña -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Para los símbolos de las redes sociales -->
+    <script type="module" src="../assets/js/reserva.js"></script>
     <title>Emerald Drift - Lists</title>
 </head>
 <body>
-    <div class="landingPage" id="portada1">
+<div class="landingPage" id="portada1">
 
-        <!-- GRID: organiza los 4 contenedores -->
-        <div class="landing-grid">
+    <!-- GRID: organiza los 4 contenedores -->
+    <div class="landing-grid">
 
-            <!-- Contenedor 1: Nav -->
-            <nav>
-                <a href="/Proyecto-Web/pages/contacto.html">Contact</a>
-                <a href="/Proyecto-Web/pages/crear_usuario.html">Register</a>
-                <a href="/Proyecto-Web/pages/reserva.html">Reservation</a>
-                <a href="/Proyecto-Web/pages/crear_destino.html">Create a destination</a>
-                <a href="/Proyecto-Web/pages/listados.html">Lists</a>
-            </nav>
+        <!-- Contenedor 1: Nav -->
+        <nav>
+            <a href="contacto.html">Contact</a>
+            <a href="crear_usuario.html">Register</a>
+            <a href="reserva.html">Reservation</a>
+            <a href="crear_destino.html">Create a destination</a>
+            <a href="listados.html">Lists</a>
+        </nav>
 
-            <!-- Contenedor 2: Título -->
-            <header class="landing-title">
-                <p>Travel agency</p>
-                <h2><a href="/Proyecto-Web/index.html">Create your reservation!</a></h2>
-                <p>Scroll down to find out more!</p>
-            </header>
+        <!-- Contenedor 2: Título -->
+        <header class="landing-title">
+            <p>Travel agency</p>
+            <h2><a href="../index.html">Create your reservation!</a></h2>
+            <p>Scroll down to find out more!</p>
+        </header>
 
-            <!-- Contenedor 3: Botones (con flexbox dentro) -->
-            <div class="landing-buttons">
-                <button class="boton" type="button">Exclusive Offers Just for You</button>
-                <a href="/Proyecto-Web/pages/contacto.html">
-                    <button class="boton" type="button">Contact us!</button>
-                </a>
-            </div>
-
-            <!-- Contenedor 4: Slogan -->
-            <div class="slogan">
-                <p>Experience the World, the Emerald Way!</p>
-            </div>
-
+        <!-- Contenedor 3: Botones (con flexbox dentro) -->
+        <div class="landing-buttons">
+            <button class="boton" type="button">Exclusive Offers Just for You</button>
+            <a href="contacto.html">
+                <button class="boton" type="button">Contact us!</button>
+            </a>
         </div>
+
+        <!-- Contenedor 4: Slogan -->
+        <div class="slogan">
+            <p>Experience the World, the Emerald Way!</p>
+        </div>
+
     </div>
+</div>
 
+<!--  Contenedor 5: Contacto  -->
+<div class="contact-section" id="contact-section">
+    <h2>Go ahead and book a destination!</h2>
 
+    <!--    La acción # significa que los datos no se reenvían a otro sitio y se gestionan completamente en la parte del cliente    -->
+    <form action="#">
+        <select id="user" name="user" required>
+            <option value="" disabled selected>Select User*</option>
+        </select>
 
-    <footer>
-        <div class="footer-section">
-            <h3>VISIT US</h3>
-            <p>89 N. First Avenue,<br> Madrid, 28001</p>
-            <p>(34) 664-8889</p>
-            <p><a>emerald@travel.com</a></p>
-        </div>
-        <div class="footer-section">
-            <h3>COPYRIGHT</h3>
-            <p> <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+        <select id="destination" name="destination" required>
+            <option value="" disabled selected>Select Destination*</option>
+        </select>
+
+        <input type="date" id="date" name="date" required>
+
+        <p id="passport-warning" style="color: #e74c3c; display: none;">
+            This destination requires a passport and the selected user does not have one.
+        </p>
+
+        <button type="submit">SUBMIT</button>
+    </form>
+</div>
+
+<footer>
+    <div class="footer-section">
+        <h3>VISIT US</h3>
+        <p>89 N. First Avenue,<br> Madrid, 28001</p>
+        <p>(34) 664-8889</p>
+        <p><a>emerald@travel.com</a></p>
+    </div>
+    <div class="footer-section">
+        <h3>COPYRIGHT</h3>
+        <p>
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
             <a property="dct:title" rel="cc:attributionURL" href="/Proyecto-Web/index.html">Emerald Drift
-            </a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://kimberly.es">Kimberly Paredes
+            </a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://kimberly.es">Kimberly
+            Paredes
         </a> is licensed under
-            <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
-                <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="">
-                <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="">
+            <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank"
+               rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0
+                <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                     src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="">
+                <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                     src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="">
             </a>
         </p>
-            </p>
+        </p>
+    </div>
+    <div class="footer-logo">
+        <!-- Insertar foto de logo -->
+        <img src="../assets/img/emerald_drift_logo.svg" alt="Agencia Logo">
+    </div>
+    <div class="footer-section">
+        <h3>DESTINATIONS</h3>
+        <a href="crear_destino.html">Create</a>
+        <a href="listados.html">See Available</a>
+    </div>
+    <div class="footer-section">
+        <h3>STAY CONNECTED</h3>
+        <div class="social-icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-pinterest"></i>
+            <i class="fa-brands fa-linkedin"></i>
         </div>
-        <div class="footer-logo">
-            <!-- Insertar foto de logo -->
-            <img src="/Proyecto-Web/assets/img/emerald_drift_logo.svg" alt="Agencia Logo">
-        </div>
-        <div class="footer-section">
-            <h3>DESTINATIONS</h3>
-            <a href="/Proyecto-Web/pages/crear_destino.html">Create</a>
-            <a href="/Proyecto-Web/pages/listados.html">See Available</a>
-        </div>
-        <div class="footer-section">
-            <h3>STAY CONNECTED</h3>
-            <div class="social-icons">
-                <i class="fa-brands fa-facebook"></i>
-                <i class="fa-brands fa-instagram"></i>
-                <i class="fa-brands fa-pinterest"></i>
-                <i class="fa-brands fa-linkedin"></i>
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 </body>
 </html>

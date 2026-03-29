@@ -1,3 +1,26 @@
+// Dos destinos por defecto, requiere pasaporte y otro no
+if (!localStorage.getItem('destinations')) {
+    const defaultDestinations = [
+        {
+            id: 1,
+            destinationName: 'Singapore',
+            country: 'Singapore',
+            price: 1200,
+            description: 'A vibrant city-state where futuristic architecture meets lush greenery and incredible street food.',
+            passport: true
+        },
+        {
+            id: 2,
+            destinationName: 'Stockholm',
+            country: 'Sweden',
+            price: 850,
+            description: 'A stunning Scandinavian capital spread across 14 islands, known for its design, history and waterways.',
+            passport: false
+        }
+    ];
+    localStorage.setItem('destinations', JSON.stringify(defaultDestinations));
+}
+
 // Obtenemos el formulario con los datos del destino
 const form = document.querySelector('form');
 
@@ -30,6 +53,7 @@ form.addEventListener('submit', (e) => {
     // Metemos el array con los destinos en el local storage, bajo otra clave 'destinations'
     localStorage.setItem('destinations', JSON.stringify(destinations));
 
+    alert(`Destination created successfully.`);
     // Una vez guardados los destinos, nos redirigimos a la página con todos los listados
-    window.location.href = '/Proyecto-Web/pages/listados.html';
+    window.location.href = 'listados.html';
 })

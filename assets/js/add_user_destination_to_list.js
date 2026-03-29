@@ -1,5 +1,4 @@
 // APARTADO PARA RENDERIZAR EL LOCAL STORAGE CON LOS USUARIOS
-// Explicación 1
 
 // Creamos una constante que contenga la referencia a la tabla en la que irán almacenados los usuarios
 const users_table = document.getElementById('users-tbody');
@@ -25,7 +24,7 @@ if (users.length === 0) {
             <td>${u.expirationCountry}</td>
             <td>${u.expiryDate}</td>
             <!--Al pulsar sobre el botón de 'Change', redirige a la página de creación de usuario, junto con su id (para hacer referencia al usuario específico) -->
-            <td><button class="button" style="background-color: #195637" onclick="window.location.href='/Proyecto-Web/pages/crear_usuario.html?id=${u.id}'">Change</button></td> 
+            <td><button class="button" style="background-color: #195637" onclick="window.location.href='crear_usuario.html?id=${u.id}'">Change</button></td> 
             <!-- Llama la función de deleteUser() -->
             <td><button class="button" style="background-color: #561927" onclick="deleteUser(${u.id})">Delete</button></td>
         </tr>
@@ -33,7 +32,7 @@ if (users.length === 0) {
 }
 
 // Para que se pueda acceder a la función, debe estar en el scope global de window
-window.deleteUser = function(id) {
+window.deleteUser = function (id) {
     // Obtenemos el array de usuarios o inicializamos uno nuevo
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -42,6 +41,10 @@ window.deleteUser = function(id) {
 
     // Actualizamos el array accediendo a la clave
     localStorage.setItem('users', JSON.stringify(updated));
+
+    // Si el usuario ha hecho una reserva, obtenemos bookings, eliminamos la reserva que se hizo con el id del usuario a eliminar
+    const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+    localStorage.setItem('bookings', JSON.stringify(bookings.filter(b => Number(b.userId) !== Number(id))));
 
     // Hacemos que actualice la página cuando elimine el usuario
     location.reload();
@@ -55,28 +58,18 @@ const destinations_container = document.getElementById('destinations');
 // Obtenemos los destinos guardados en local storage, si no inicializamos un array vacío
 const destinations = JSON.parse(localStorage.getItem('destinations')) || [];
 
-// Si el array no contiene ningún destino, lo mostrará en el documento
-if (destinations.length === 0) {
-    destinations_container.innerHTML = `<div class="ls-empty-cards">No destinations added yet</div>`;
-
-} else {
-    destinations_container.innerHTML = destinations.map(d => `
-        <div class="dest-card" onclick="toggleCard(this)">
-            <p class="dest-region">${d.country}</p>
-            <h3 class="dest-name">${d.destinationName}</h3>
-            <p class="dest-desc">Price: ${d.price}€</p>
-            <p class="dest-desc">Passport required: ${d.passport ? 'Yes' : 'No'}</p>
-            
-            <!--      Este será el contenedor que aparecerá cuando el usuario haga click sobre el contenedor principal      -->
-            <div class="dest-details">
-                <p class="dest-desc">${d.description}</p>
-                <h4>Reservations</h4>
-            <p class="dest-desc">No reservations yet</p>
-        </div>
-        </div>
-    `).join('');
-}
-
-window.toggleCard = function(card) {
-    card.classList.toggle('open');
+// Si el array no contiene ningún destino, lo mostrará en el documento de listados
+if (destinations_container) {
+    if (destinations.length === 0) {
+        destinations_container.innerHTML = `<div class="ls-empty-cards">No destinations added yet</div>`;
+    } else {
+        destinations_container.innerHTML = destinations.map(d => `
+            <div class="dest-card" onclick="window.location.href='detalles_destino.html?id=${d.id}'">
+                <p class="dest-region">${d.country}</p>
+                <h3 class="dest-name">${d.destinationName}</h3>
+                <p class="dest-desc">Price: ${d.price}€</p>
+                <p class="dest-desc">Passport required: ${d.passport ? 'Yes' : 'No'}</p>
+            </div>
+        `).join('');
+    }
 }
