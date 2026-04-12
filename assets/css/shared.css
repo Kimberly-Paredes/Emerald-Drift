@@ -177,3 +177,38 @@ footer {
     transform: scale(1.2); /* Efecto de zoom */
     color: #9abc9a; /* Cambia el color al hacer hover */
 }
+
+/* Estilo de la sección de información de los usuarios registrados y destinos creados */
+.info-section {
+    background: #97cdb7;
+    padding: 5rem 4rem;
+    margin: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    color: #08261c;
+}
+
+.info-card { text-align: center; }
+
+.info-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #0a3c30;
+    margin-bottom: 1rem;
+}
+
+.info-number {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    font-weight: 300;
+    color: inherit;
+    text-decoration: none;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+.info-number:hover { color: #d8f9d8; }
+
+.info-desc { font-size: 0.82rem; opacity: 0.5; line-height: 1.8; }

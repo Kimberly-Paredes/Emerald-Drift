@@ -33,7 +33,7 @@
             <!-- Contenedor 3: Botones (con flexbox dentro) -->
             <div class="landing-buttons">
                 <button class="boton" type="button">Exclusive Offers Just for You</button>
-                <a href="pages/contacto.html">
+                <a href="pages/contact.html">
                     <button class="boton" type="button">Contact us!</button>
                 </a>
             </div>
@@ -43,6 +43,19 @@
                 <p>Experience the World, the Emerald Way!</p>
             </div>
 
+        </div>
+    </div>
+
+    <div class="info-section">
+        <div class="info-card">
+            <p class="info-label">Registered Users</p>
+            <a href="pages/listados.html" class="info-number" id="user-count">0</a>
+            <p class="info-desc">Join our growing community of travellers</p>
+        </div>
+        <div class="info-card">
+            <p class="info-label">Available Destinations</p>
+            <a href="pages/listados.html" class="info-number" id="dest-count">0</a>
+            <p class="info-desc">Explore our curated selection of places</p>
         </div>
     </div>
 
@@ -85,5 +98,14 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Este script modifica el campo del número de usuarios
+        // registrados y destinos creados, leyendo el localStorage
+        document.getElementById('user-count').textContent =
+            (JSON.parse(localStorage.getItem('users')) || []).length;
+        document.getElementById('dest-count').textContent =
+            (JSON.parse(localStorage.getItem('destinations')) || []).length;
+    </script>
 </body>
 </html>

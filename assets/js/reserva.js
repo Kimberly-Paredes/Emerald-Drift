@@ -23,8 +23,18 @@ function populateSelect(select, items, variable) {
     });
 }
 
-populateSelect(userSelect, users, u => `${u.name} ${u.surname}`);
-populateSelect(destSelect, destinations, d => d.destinationName);
+// Hace que la lista desplegable tenga el nombre del usuario y además indique si tiene pasaporte o no
+populateSelect(userSelect, users, u =>
+    `${u.name} ${u.surname} - ${u.identification ? 'Has passport' : 'No passport'}`
+);
+
+// Hace que la lista desplegable tenga el nombre del destino y además indique si requiere pasaporte o no
+populateSelect(destSelect, destinations, d =>
+    `${d.destinationName} - ${d.passport ? 'Passport required' : 'No passport required'}`
+);
+
+// Obtenemos el botón del submit de reserva
+const submitBtn = document.querySelector('button[type="submit"]');
 
 // Función que comprueba los pasaportes (si el user tiene pasaporte para un destino que lo requiera)
 function checkPassport() {
@@ -34,11 +44,16 @@ function checkPassport() {
     // Obtiene el destino seleccionado (el destino actual)
     const destination = destinations.find(d => d.id === Number(destSelect.value));
 
-    // Si están seleccionados
+    // En el caso de que ambos están seleccionados
     if (user && destination) {
-        // Si el destino requiere pasaporte (True) y el usuario no tiene identificación (True),
-        // Se hará visible el warning, si no, se queda igual
-        warning.style.display = destination.passport && !user.identification ? 'block' : 'none';
+        // Devuelve verdadero si el destino requiere pasaporte y no lo tiene
+        const blocked = destination.passport && !user.identification;
+
+        // Si blocked es True el warning pasa a ser 'block' (visible)
+        warning.style.display = blocked ? 'block' : 'none';
+
+        // El botón se deshabilita (no se podrá hacer una reserva)
+        submitBtn.disabled = blocked;
     }
 }
 
