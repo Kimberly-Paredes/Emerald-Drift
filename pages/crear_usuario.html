@@ -13,61 +13,49 @@
     <title>Emerald Drift</title>
 </head>
 <body>
-<div class="landingPage" id="portada1">
-
-    <!-- GRID: organiza los 4 contenedores -->
-    <div class="landing-grid">
-
-        <!-- Contenedor 1: Nav -->
-        <nav>
-            <a href="contacto.html">Contact</a>
-            <a href="crear_usuario.html">Register</a>
-            <a href="reserva.html">Reservation</a>
-            <a href="crear_destino.html">Create a destination</a>
-            <a href="listados.html">Lists</a>
-        </nav>
-
-        <!-- Contenedor 2: Título -->
-        <header class="landing-title">
-            <p>Travel agency</p>
-            <h2><a href="../index.html">Sign Up Section</a></h2>
-            <p>Scroll down to find out more!</p>
-        </header>
-
-        <!-- Contenedor 3: Botones (con flexbox dentro) -->
-        <div class="landing-buttons">
-            <button class="boton" type="button">Exclusive Offers Just for You</button>
-            <a href="contacto.html">
-                <button class="boton" type="button">Contact us!</button>
-            </a>
-        </div>
-
-        <!-- Contenedor 4: Slogan -->
-        <div class="slogan">
-            <p>Experience the World, the Emerald Way!</p>
-        </div>
-
-    </div>
-</div>
+<header class="site-header">
+    <nav>
+        <a href="contacto.html">Contact</a>
+        <a href="crear_usuario.html">Register</a>
+        <a href="reserva.html">Reservation</a>
+        <a href="crear_destino.html">Create a destination</a>
+        <a href="listados.html">Lists</a>
+    </nav>
+</header>
 
 <!--  Contenedor 5: Sección de registro de usuario  -->
 <div class="contact-section" id="contact-section">
     <h2>To sign up you need to fill out the fields</h2>
     <p class="required-note">"*" indicates required fields</p>
 
-    <form action="#">
+    <form action="#" novalidate>
         <h3>Personal data</h3>
-        <input type="text" id="name" name="name" placeholder="Name*" required>
-        <input type="text" id="surname" name="surname" placeholder="Surname*" required>
-        <input type="number" id="age" name="age" placeholder="Age*" min="0" max="120" required>
-        <input type="email" id="email" name="email" placeholder="Email* (pattern: email@email.com)" required>
-        <input type="tel" id="phone" name="phone" placeholder="Phone* (pattern: 999 999 999)" maxlength="9"
-               pattern="\d{9}">
+        <div class="field-group">
+            <input type="text" id="name" placeholder="Name*">
+        </div>
+        <div class="field-group">
+            <input type="text" id="surname" placeholder="Surname*">
+        </div>
+        <div class="field-group">
+            <input type="text" id="age" placeholder="Age*">
+        </div>
+        <div class="field-group">
+            <input type="email" id="email" placeholder="Email* (pattern: email@email.com)">
+        </div>
+        <div class="field-group">
+            <input type="tel" id="phone" placeholder="Phone* (pattern: 999 999 999)">
+        </div>
 
         <h3>Passport data</h3>
-        <input type="text" id="id-number" name="id-number" placeholder="ID Number">
-        <input type="text" id="expiration-country" name="expiration-country" placeholder="Expiration Country">
-        <input type="date" id="expiration-date" name="expiration-date">
+        <div class="field-group">
+            <input type="text" id="id-number" name="id-number" placeholder="ID Number">
+        </div>
+        <div class="field-group">
+            <input type="text" id="expiration-country" name="expiration-country" placeholder="Expiration Country">
+        </div>
+        <div class="field-group">
+            <input type="date" id="expiration-date" name="expiration-date">
+        </div>
         <button type="submit">SUBMIT</button>
     </form>
 </div>
@@ -83,7 +71,7 @@
         <h3>COPYRIGHT</h3>
         <p>
         <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
-            <a property="dct:title" rel="cc:attributionURL" href="/Proyecto-Web/index.html">Emerald Drift
+            <a property="dct:title" rel="cc:attributionURL" href="../index.html">Emerald Drift
             </a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://kimberly.es">Kimberly
             Paredes
         </a> is licensed under

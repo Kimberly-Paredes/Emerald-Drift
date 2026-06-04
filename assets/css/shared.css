@@ -114,6 +114,10 @@ nav a {
     letter-spacing: 0.1em;
 }
 
+.site-header {
+    background: #1a5c38;
+}
+
 /* Estilo general del footer (este apartado se repite en todas páginas) */
 footer {
     display: flex;
@@ -212,3 +216,37 @@ footer {
 .info-number:hover { color: #d8f9d8; }
 
 .info-desc { font-size: 0.82rem; opacity: 0.5; line-height: 1.8; }
+
+/* Borde rojo: campo inválido */
+.input-error {
+    border: 2px solid #e53e3e !important;
+    background-color: #fff5f5;
+    outline: none;
+}
+
+/* Borde verde: campo válido */
+.input-success {
+    border: 2px solid #38a169 !important;
+    background-color: #f0fff4;
+    outline: none;
+}
+
+/* Texto de error debajo del campo */
+.error-message {
+    display: block;
+    color: #e53e3e;
+    font-size: 0.8rem;
+    margin-top: 4px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.field-group input {
+    width: 100%;
+    box-sizing: border-box;
+}

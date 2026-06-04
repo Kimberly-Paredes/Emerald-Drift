@@ -108,3 +108,23 @@
     opacity: 0.5;
     line-height: 1.8;
 }
+
+.ls-filters {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.ls-filters label {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.ls-filters select {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 4px;
+    cursor: pointer;
+}

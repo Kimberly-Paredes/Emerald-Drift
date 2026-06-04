@@ -1,4 +1,3 @@
-// Usuarios por defecto (uno tiene pasaporte y otro no)
 if (!localStorage.getItem('users')) {
     const defaultUsers = [
         {
@@ -8,7 +7,7 @@ if (!localStorage.getItem('users')) {
             email: 'maria@email.com',
             age: 34,
             phone: '612345678',
-            identification: '44551122M',
+            identification: 'MAM123321',
             expirationCountry: 'Spain',
             expiryDate: '2028-06-15'
         },
@@ -27,22 +26,13 @@ if (!localStorage.getItem('users')) {
     localStorage.setItem('users', JSON.stringify(defaultUsers));
 }
 
-// Buscamos los parámetros de la URL, si existen (?número_ID)
-// Después, el URLSearchParams lo parsea para poder operar con los valores individuales, en este caso, el ID
 const params = new URLSearchParams(window.location.search);
-
-// Obtiene el ID y lo pasa de string a número
 const editId = Number(params.get('id'));
 
-// Si el ID existe, significa que nos han redirigido de la página de listados para modificar los valores del usuario
 if (editId) {
-    // Obtenemos el array de usuarios o inicializamos uno
     const users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Buscamos el usuario por su ID dentro del array de usuarios
     const user = users.find(u => u.id === editId);
 
-    // Si lo encuentra, rellena el formulario con los datos almacenados en el local storage
     if (user) {
         document.getElementById('name').value = user.name;
         document.getElementById('surname').value = user.surname;
@@ -53,7 +43,6 @@ if (editId) {
         document.getElementById('expiration-country').value = user.expirationCountry;
         document.getElementById('expiration-date').value = user.expiryDate;
 
-        // Si el usuario ya tiene pasaporte, bloqueamos los campos
         if (user.identification) {
             document.getElementById('id-number').disabled = true;
             document.getElementById('expiration-country').disabled = true;
@@ -62,56 +51,214 @@ if (editId) {
     }
 }
 
-// Obtenemos el formulario
-const form = document.querySelector('form');
-
-// Si lo obtenemos, añadimos un event listener, para que 'escuche' cuando el usuario pulse el botón 'submit'
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Para evitar que se recargue
-
-    // Comprobamos que el pasaporte no está caducado
-    const identification = document.getElementById('id-number').value;
-    const expiryDate = document.getElementById('expiration-date').value;
-
-    if (identification && expiryDate && new Date(expiryDate) < new Date()) {
-        alert('The passport expiration date is in the past.');
-        return;
-    }
-
-    // Obtenemos el array de usuarios o inicializamos uno
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-
-    const nextId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
-
-    // Creamos un objeto con todos los datos del usuario
-    const user = {
-        id: editId || nextId,
+function getFields() {
+    return {
         name: document.getElementById('name').value,
         surname: document.getElementById('surname').value,
         email: document.getElementById('email').value,
         age: document.getElementById('age').value,
         phone: document.getElementById('phone').value,
-        identification: identification,
-        expirationCountry: expiryDate,
+        identification: document.getElementById('id-number').value,
+        expirationCountry: document.getElementById('expiration-country').value,
         expiryDate: document.getElementById('expiration-date').value
     };
+}
 
-    // Es necesario comprobar la existencia del usuario en el array (porque puede
-    // ser que estamos modificando y no creando un usuario nuevo)
+function showError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+
+    field.classList.remove('input-success');
+    field.classList.add('input-error');
+
+    let errorEl = document.querySelector(`.error-message[data-for="${fieldId}"]`);
+    if (!errorEl) {
+        errorEl = document.createElement('span');
+        errorEl.className = 'error-message';
+        errorEl.dataset.for = fieldId;
+        field.insertAdjacentElement('afterend', errorEl);
+    }
+    errorEl.textContent = message;
+}
+
+function showSuccess(fieldId) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+
+    field.classList.remove('input-error');
+    field.classList.add('input-success');
+
+    const errorEl = document.querySelector(`.error-message[data-for="${fieldId}"]`);
+    if (errorEl) errorEl.remove();
+}
+
+function clearFieldState(fieldId) {
+    const field = document.getElementById(fieldId);
+    if (!field) return;
+
+    field.classList.remove('input-error', 'input-success');
+
+    const errorEl = document.querySelector(`.error-message[data-for="${fieldId}"]`);
+    if (errorEl) errorEl.remove();
+}
+
+function clearAll() {
+    ['name', 'surname', 'email', 'age', 'phone', 'id-number', 'expiration-country', 'expiration-date']
+        .forEach(clearFieldState);
+}
+
+function validateFields(fields) {
+    const errors = {};
+
+    if (!fields.name.trim()) {
+        errors.name = 'El nombre es obligatorio.';
+    } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(fields.name.trim())) {
+        errors.name = 'El nombre solo puede contener letras y espacios.';
+    }
+
+    if (!fields.surname.trim()) {
+        errors.surname = 'Los apellidos son obligatorios.';
+    } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(fields.surname.trim())) {
+        errors.surname = 'Los apellidos solo pueden contener letras y espacios.';
+    }
+
+    if (!fields.email.trim()) {
+        errors.email = 'El email es obligatorio.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim())) {
+        errors.email = 'Introduce un email válido (ej: nombre@dominio.com).';
+    }
+
+    const age = Number(fields.age);
+    if (fields.age.trim() === '') {
+        errors.age = 'La edad es obligatoria.';
+    } else if (!Number.isInteger(age) || age < 0 || age > 120) {
+        errors.age = 'La edad debe ser un número entero entre 0 y 120.';
+    }
+
+    if (!fields.phone.trim()) {
+        errors.phone = 'El teléfono es obligatorio.';
+    } else if (!/^[6-9]\d{8}$/.test(fields.phone.trim())) {
+        errors.phone = 'El teléfono debe tener 9 dígitos y empezar por 6, 7, 8 o 9.';
+    }
+
+    // Validación del pasaporte (campos opcionales pero interdependientes)
+    if (fields.identification.trim()) {
+        // Formato pasaporte español: 3 letras + 6 números (ej: ABC123456)
+        if (!/^[A-Za-z]{3}\d{6}$/.test(fields.identification.trim())) {
+            errors['id-number'] = 'El número de pasaporte debe tener el formato AAA000000 (3 letras y 6 números).';
+        }
+
+        if (!fields.expirationCountry.trim()) {
+            errors['expiration-country'] = 'El país de expedición es obligatorio si se introduce un pasaporte.';
+        } else if (!/^[a-zA-ZÀ-ÿ\s]+$/.test(fields.expirationCountry.trim())) {
+            errors['expiration-country'] = 'El país solo puede contener letras y espacios.';
+        }
+
+        if (!fields.expiryDate) {
+            errors['expiration-date'] = 'La fecha de caducidad es obligatoria si se introduce un pasaporte.';
+        } else if (new Date(fields.expiryDate) < new Date()) {
+            errors['expiration-date'] = 'El pasaporte está caducado. La fecha debe ser futura.';
+        }
+    }
+
+    // Si se rellena país o fecha pero no el número de pasaporte
+    if (!fields.identification.trim()) {
+        if (fields.expirationCountry.trim()) {
+            errors['expiration-country'] = 'Introduce primero el número de pasaporte.';
+        }
+        if (fields.expiryDate) {
+            errors['expiration-date'] = 'Introduce primero el número de pasaporte.';
+        }
+    }
+
+    return errors;
+}
+
+const REQUIRED_FIELDS = ['name', 'surname', 'email', 'age', 'phone'];
+const PASSPORT_FIELDS = ['id-number', 'expiration-country', 'expiration-date'];
+
+function validateAndDisplay(fieldId) {
+    const fields = getFields();
+    const fieldEl = document.getElementById(fieldId);
+    const fieldValue = fieldEl?.value ?? '';
+
+    // Campos de pasaporte dependientes: solo si hay número de identificación
+    if ((fieldId === 'expiration-country' || fieldId === 'expiration-date') && !fields.identification.trim()) {
+        clearFieldState(fieldId);
+        return;
+    }
+
+    if (!fieldValue.trim() && !fieldEl.classList.contains('input-error')) {
+        clearFieldState(fieldId);
+        return;
+    }
+
+    const errors = validateFields(fields);
+
+    if (errors[fieldId]) {
+        showError(fieldId, errors[fieldId]);
+    } else {
+        showSuccess(fieldId);
+    }
+}
+
+['name', 'surname', 'email', 'age', 'phone', 'id-number', 'expiration-country', 'expiration-date']
+    .forEach(fieldId => {
+        const el = document.getElementById(fieldId);
+        if (!el) return;
+
+        el.addEventListener('blur', () => validateAndDisplay(fieldId));
+        el.addEventListener('input', () => validateAndDisplay(fieldId));
+    });
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearAll();
+
+    const fields = getFields();
+    const errors = validateFields(fields);
+
+    const allFieldIds = ['name', 'surname', 'email', 'age', 'phone'];
+    if (fields.identification.trim() || fields.expirationCountry.trim() || fields.expiryDate) {
+        allFieldIds.push('id-number', 'expiration-country', 'expiration-date');
+    }
+
+    allFieldIds.forEach(fieldId =>
+        errors[fieldId] ? showError(fieldId, errors[fieldId]) : showSuccess(fieldId)
+    );
+
+    if (Object.keys(errors).length > 0) {
+        document.querySelector('.input-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const nextId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+
+    const user = {
+        id: editId || nextId,
+        name: fields.name,
+        surname: fields.surname,
+        email: fields.email,
+        age: Number(fields.age),
+        phone: fields.phone,
+        identification: fields.identification,
+        expirationCountry: fields.expirationCountry,
+        expiryDate: fields.expiryDate
+    };
+
     const existingIndex = users.findIndex(u => u.id === user.id);
 
-    // Si el usuario exite, lo modificamos
     if (existingIndex !== -1) {
         users[existingIndex] = user;
     } else {
-        users.push(user); // Si no añadimos uno nuevo
+        users.push(user);
     }
 
-    // Añade el array al local storage
     localStorage.setItem('users', JSON.stringify(users));
 
-    alert(`User added correctly!`)
-    // Redirige a la página de listados
+    alert('User added correctly!');
     window.location.href = 'listados.html';
 });

@@ -13,42 +13,15 @@
     <title>Emerald Drift - Lists</title>
 </head>
 <body>
-<div class="landingPage" id="portada1">
-
-    <!-- GRID: organiza los 4 contenedores -->
-    <div class="landing-grid">
-
-        <!-- Contenedor 1: Nav -->
-        <nav>
-            <a href="contacto.html">Contact</a>
-            <a href="crear_usuario.html">Register</a>
-            <a href="reserva.html">Reservation</a>
-            <a href="crear_destino.html">Create a destination</a>
-            <a href="listados.html">Lists</a>
-        </nav>
-
-        <!-- Contenedor 2: Título -->
-        <header class="landing-title">
-            <p>Travel agency</p>
-            <h2><a href="../index.html">List Section</a></h2>
-            <p>Scroll down to find out more!</p>
-        </header>
-
-        <!-- Contenedor 3: Botones (con flexbox dentro) -->
-        <div class="landing-buttons">
-            <button class="boton" type="button">Exclusive Offers Just for You</button>
-            <a href="contacto.html">
-                <button class="boton" type="button">Contact us!</button>
-            </a>
-        </div>
-
-        <!-- Contenedor 4: Slogan -->
-        <div class="slogan">
-            <p>Experience the World, the Emerald Way!</p>
-        </div>
-
-    </div>
-</div>
+<header class="site-header">
+    <nav>
+        <a href="contacto.html">Contact</a>
+        <a href="crear_usuario.html">Register</a>
+        <a href="reserva.html">Reservation</a>
+        <a href="crear_destino.html">Create a destination</a>
+        <a href="listados.html">Lists</a>
+    </nav>
+</header>
 
 <!--  Contenedor 5: Sección de las listas  -->
 <div class="lists-section">
@@ -57,6 +30,18 @@
     <div class="ls-block">
         <p class="ls-label">Registry</p>
         <h2 class="ls-title">Registered <em>users</em></h2>
+
+        <div class="ls-filters">
+            <label for="user-sort">Sort by:</label>
+            <select id="user-sort">
+                <option value="default">Default</option>
+                <option value="name-asc">Name A→Z</option>
+                <option value="name-desc">Name Z→A</option>
+                <option value="passport-yes">Has passport</option>
+                <option value="passport-no">No passport</option>
+            </select>
+        </div>
+
         <table class="ls-table">
             <thead>
             <tr>
@@ -73,9 +58,7 @@
                 <th>Delete</th>
             </tr>
             </thead>
-            <tbody id="users-tbody">
-            <!-- Aquí se insertarán los usuarios nuevos creados (o si la tabla está vacía) -->
-            </tbody>
+            <tbody id="users-tbody"></tbody>
         </table>
     </div>
 
@@ -83,9 +66,19 @@
     <div class="ls-block">
         <p class="ls-label">Catalogue</p>
         <h2 class="ls-title">Available <em>destinations</em></h2>
-        <div class="ls-cards" id="destinations">
-            <!--      Aquí irán los cards, ya sea el contenedor vacío o con los destinos          -->
+
+        <div class="ls-filters">
+            <label for="dest-sort">Sort by:</label>
+            <select id="dest-sort">
+                <option value="default">Default</option>
+                <option value="name-asc">Name A→Z</option>
+                <option value="name-desc">Name Z→A</option>
+                <option value="price-asc">Price ↑</option>
+                <option value="price-desc">Price ↓</option>
+            </select>
         </div>
+
+        <div class="ls-cards" id="destinations"></div>
     </div>
 
 </div>
@@ -101,7 +94,7 @@
         <h3>COPYRIGHT</h3>
         <p>
         <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
-            <a property="dct:title" rel="cc:attributionURL" href="/Proyecto-Web/index.html">Emerald Drift
+            <a property="dct:title" rel="cc:attributionURL" href="../index.html">Emerald Drift
             </a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://kimberly.es">Kimberly
             Paredes
         </a> is licensed under
