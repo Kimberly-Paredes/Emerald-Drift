@@ -1,4 +1,4 @@
-# 🌿 Emerald Drift — Travel Agency Website
+# Emerald Drift — Travel Agency Website
 
 > *"Experience the World, the Emerald Way!"*
 
@@ -6,7 +6,7 @@ Proyecto frontend desarrollado para el módulo de **Lenguaje de Marcas (LM)** de
 
 ---
 
-## 📁 Estructura del proyecto
+## Estructura del proyecto
 
 ```
 Agencia2-Proyecto-LM/
@@ -39,7 +39,7 @@ Agencia2-Proyecto-LM/
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
 - **Landing page** con contador dinámico de usuarios y destinos registrados.
 - **Registro de usuarios** con validación de campos (nombre, apellidos, edad, email, teléfono, DNI/pasaporte).
@@ -53,7 +53,7 @@ Agencia2-Proyecto-LM/
 
 ---
 
-## 🚀 Cómo ejecutar
+## Cómo ejecutar
 
 Al ser un proyecto de HTML/CSS/JS puro, **no requiere instalación ni servidor**.
 
@@ -67,7 +67,7 @@ Al ser un proyecto de HTML/CSS/JS puro, **no requiere instalación ni servidor**
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## Tecnologías utilizadas
 
 | Tecnología | Uso |
 |---|---|
@@ -80,7 +80,7 @@ Al ser un proyecto de HTML/CSS/JS puro, **no requiere instalación ni servidor**
 
 ---
 
-## 📸 Páginas
+## Páginas
 
 | Ruta | Descripción |
 |---|---|
