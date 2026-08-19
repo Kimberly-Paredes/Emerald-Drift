@@ -93,7 +93,3 @@ Al ser un proyecto de HTML/CSS/JS puro, **no requiere instalación ni servidor**
 | `/pages/contacto.html` | Formulario de contacto |
 
 ---
-
-## 📄 Licencia
-
-[Emerald Drift](./index.html) por [Kimberly Paredes](https://kimberly.es) está bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
